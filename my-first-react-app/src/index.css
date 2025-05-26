@@ -96,234 +96,48 @@
   .all-movies {
     @apply space-y-9;
 
-    & h2 {
-      @apply flex items-center justify-between;
-
-      & .view-all {
-        @apply text-sm text-light-200 hover:text-white transition-colors;
-      }
-    }
-
     & ul {
-      @apply grid grid-cols-1 gap-6 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+      @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
     }
-
-    & .movie-card {
-      @apply bg-dark-100 rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105;
-
-      & img {
-        @apply w-full h-[280px] object-cover;
-      }
-
-      & .content {
-        @apply p-4;
-      }
-
-      & h3 {
-        @apply text-lg font-semibold mb-2 line-clamp-1;
-      }
-
-      & .meta {
-        @apply flex items-center gap-4 text-sm text-gray-100;
-      }
-    }
-  }
-
-  .movie-card-container {
-    @apply relative;
   }
 
   .movie-card {
-    @apply relative rounded-lg overflow-hidden transition-all duration-300;
+    @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
 
-    &.hovered {
-      @apply scale-110 z-50 shadow-2xl;
+    & img {
+      @apply rounded-lg h-auto w-full;
     }
 
-    & .poster {
-      @apply relative;
-
-      & img {
-        @apply w-full h-[400px] object-cover rounded-lg transition-transform duration-300;
-      }
+    & h3 {
+      @apply text-white font-bold text-base line-clamp-1;
     }
 
-    & .hover-content {
-      @apply absolute inset-0 bg-gradient-to-t from-dark-100 via-dark-100/95 to-transparent p-4 flex flex-col justify-end gap-3 opacity-0 transition-opacity duration-300;
-
-      .movie-card.hovered & {
-        @apply opacity-100;
-      }
-
-      & h3 {
-        @apply text-xl font-bold text-white line-clamp-1;
-      }
-
-      & .meta-info {
-        @apply flex items-center gap-3 text-sm text-light-200;
-
-        & .rating {
-          @apply flex items-center gap-1 text-yellow-400;
-        }
-
-        & .year {
-          @apply after:content-['•'] after:ml-3 text-light-100;
-        }
-
-        & .lang {
-          @apply text-light-100 font-medium;
-        }
-      }
-
-      & .overview {
-        @apply text-sm text-light-200 line-clamp-3;
-      }
-
-      & .actions {
-        @apply flex items-center gap-2 mt-3;
-
-        & .play-btn {
-          @apply flex items-center gap-2 bg-white text-dark-100 px-4 py-1.5 rounded-lg font-medium transition-colors hover:bg-light-100;
-        }
-
-        & .info-btn {
-          @apply p-1.5 rounded-full bg-dark-100/50 text-white hover:bg-dark-100/70 transition-colors;
-        }
-      }
-    }
-  }
-
-  .movie-detail-overlay {
-    @apply fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4;
-  }
-
-  .movie-detail-container {
-    @apply relative bg-dark-100 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto;
-  }
-
-  .close-button {
-    @apply absolute right-4 top-4 text-white text-3xl hover:text-gray-300 z-20;
-  }
-
-  .movie-detail-content {
-    @apply relative;
-
-    & .backdrop {
-      @apply h-[300px] w-full bg-cover bg-center relative;
-
-      &::after {
-        content: '';
-        @apply absolute inset-0 bg-gradient-to-t from-dark-100 to-transparent;
-      }
+    & .content {
+      @apply mt-2 flex flex-row items-center flex-wrap gap-2;
     }
 
-    & .movie-info {
-      @apply p-6 -mt-20 relative z-10;
+    & .rating {
+      @apply flex flex-row items-center gap-1;
     }
 
-    & .meta-info {
-      @apply flex gap-4 text-gray-100 mt-2;
+    & .rating img {
+      @apply size-4 object-contain;
     }
 
-    & .overview {
-      @apply text-light-200 mt-4 leading-relaxed;
+    & .rating p {
+      @apply font-bold text-base text-white;
     }
 
-    & .additional-info {
-      @apply mt-6 space-y-2 text-light-200;
-    }
-  }
-
-  .movie-detail-page {
-    @apply relative min-h-screen;
-
-    & .backdrop {
-      @apply absolute top-0 left-0 w-full h-[75vh] bg-cover bg-center;
-
-      &::after {
-        content: '';
-        @apply absolute inset-0 bg-gradient-to-b from-transparent via-dark-100/90 to-dark-100;
-      }
+    & .content span {
+      @apply text-sm text-gray-100;
     }
 
-    & .wrapper {
-      @apply relative z-10 pt-[45vh];
+    & .content .lang {
+      @apply capitalize text-gray-100 font-medium text-base;
     }
 
-    & .back-button {
-      @apply fixed top-8 left-8 z-20 text-white text-lg hover:text-gray-300 flex items-center gap-2 bg-dark-100/50 backdrop-blur-sm px-4 py-2 rounded-lg transition-all duration-300 hover:bg-dark-100/70;
-    }
-
-    & .movie-info {
-      @apply bg-dark-100/95 backdrop-blur-md rounded-t-3xl px-8 py-12 min-h-[50vh];
-
-      & h1 {
-        @apply text-left text-4xl sm:text-5xl max-w-none mx-0 mb-4;
-      }
-
-      & .meta-info {
-        @apply flex flex-wrap gap-4 text-gray-100 mt-4;
-      }
-
-      & .pill {
-        @apply px-4 py-1.5 rounded-full bg-light-100/10 text-light-100 text-sm font-medium;
-
-        &.rating {
-          @apply flex items-center gap-1.5 bg-yellow-500/20 text-yellow-400;
-        }
-      }
-
-      & .overview {
-        @apply text-light-200 mt-8 text-lg leading-relaxed;
-      }
-
-      & .info-grid {
-        @apply grid md:grid-cols-2 gap-8 mt-8;
-
-        & h3 {
-          @apply text-white text-xl font-semibold mb-4;
-        }
-      }
-
-      & .tag {
-        @apply px-3 py-1 rounded-lg bg-light-100/5 text-light-100 text-sm;
-      }
-
-      & .cast-list {
-        @apply flex flex-wrap gap-4;
-      }
-
-      & .cast-item {
-        @apply flex flex-col items-center gap-2 text-center;
-
-        & span {
-          @apply text-sm text-light-200 max-w-[100px] truncate;
-        }
-      }
-
-      & .similar-movies {
-        @apply mt-16;
-
-        & h2 {
-          @apply text-2xl font-bold mb-6;
-        }
-      }
-
-      & .similar-grid {
-        @apply grid grid-cols-2 md:grid-cols-4 gap-6;
-      }
-
-      & .similar-movie-card {
-        @apply cursor-pointer transition-transform duration-300 hover:scale-105;
-
-        & h4 {
-          @apply text-white font-semibold mt-3 line-clamp-1;
-        }
-
-        & span {
-          @apply text-sm text-gray-100;
-        }
-      }
+    & .content .year {
+      @apply text-gray-100 font-medium text-base;
     }
   }
 }
